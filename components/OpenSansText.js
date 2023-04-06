@@ -1,8 +1,9 @@
 import React from "react";
 import { Text } from "react-native";
 import { useFonts } from "expo-font";
+import { Colors } from "../assets/Colors";
 
-export default function OpenSansText({ children, weight }) {
+export default function OpenSansText({ children, weight, style }) {
     const [loaded] = useFonts({
         "opensans-regular": require("../assets/fonts/OpenSans-Regular.ttf"),
         "opensans-medium": require("../assets/fonts/OpenSans-Medium.ttf"),
@@ -26,5 +27,17 @@ export default function OpenSansText({ children, weight }) {
     if (!loaded) {
         return null;
     }
-    return <Text style={{ fontFamily: getWeight() }}>{children}</Text>;
+
+    return (
+        <Text
+            style={{
+                fontFamily: getWeight(),
+                fontSize: 16,
+                color: Colors.offBlack,
+                ...style,
+            }}
+        >
+            {children}
+        </Text>
+    );
 }
