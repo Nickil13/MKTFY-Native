@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="234.88" height="89" viewBox="0 0 234.88 89">
+  <g id="logo" transform="translate(-73 -301)">
+    <path id="Path_39" data-name="Path 39" d="M5.76,0V-52H20.48l7.84,21.28q.72,2.16,1.36,4.48t1.36,4.64h.32q.72-2.32,1.36-4.64t1.36-4.48L41.6-52H56.32V0H43.84V-15.36q0-2,.2-4.4t.44-4.92q.24-2.52.56-4.92t.56-4.32h-.32L40.96-21.44l-6.4,17.2H27.2l-6.4-17.2L16.64-33.92h-.32q.24,1.92.56,4.32t.56,4.92q.24,2.52.44,4.92t.2,4.4V0ZM67.84,0V-52H81.6v19.36h.32L95.04-52h15.04L94.56-30.88,113.12,0H98.08L86.56-20,81.6-12.96V0ZM125.6,0V-40.48H111.84V-52h41.28v11.52H139.36V0Zm35.2,0V-52h33.92v11.52H174.56v9.92h17.28v11.52H174.56V0Zm50.4,0V-17.92L195.52-52h14.72l3.84,10.88q.96,2.96,1.92,5.76t2,5.84h.32q1.04-3.04,2.04-5.84t2.04-5.76L226.24-52h14.4L224.96-17.92V0Z" transform="translate(67.24 353)" fill="#9349de"/>
+    <text id="Buy_and_sell_stuff_" data-name="Buy and sell stuff!" transform="translate(190 385)" fill="#9349de" font-size="16"  letter-spacing="0.04em"><tspan x="-71" y="0">Buy and sell stuff!</tspan></text>
+  </g>
+</svg>
