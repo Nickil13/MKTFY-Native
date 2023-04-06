@@ -11,7 +11,7 @@ export default function Button({ title, onPress, color, padding, weight }) {
                 {
                     opacity: pressed ? 0.8 : 1,
                     backgroundColor: color || "white",
-                    padding: padding || 10,
+                    padding: padding || 12,
                 },
                 styles.wrapperCustom,
             ]}
@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
         shadowColor: "#00000024",
         shadowOffset: { width: 0, height: 5 },
         shadowRadius: 20,
+        width: "100%",
     },
 });

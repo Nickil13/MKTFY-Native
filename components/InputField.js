@@ -36,7 +36,7 @@ export default function InputField({
 }
 
 const styles = StyleSheet.create({
-    inputControl: { display: "flex", gap: 10 },
+    inputControl: { display: "flex", gap: 10, width: "100%" },
     input: {
         height: 40,
         borderWidth: 1,
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.gray100,
         color: Colors.offBlack,
         fontFamily: "opensans-regular",
+        backgroundColor: "white",
     },
     label: {},
 });

@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import {
     StyleSheet,
     Image,
     View,
     ImageBackground,
     SafeAreaView,
-    TextInput,
     TouchableOpacity,
 } from "react-native";
 import OpenSansText from "../../components/OpenSansText";
@@ -14,7 +12,7 @@ import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 import { Colors } from "../../assets/Colors";
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
     return (
@@ -49,7 +47,9 @@ export default function Login() {
                         value={password}
                         placeholder="password"
                     />
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("Forgot Password")}
+                    >
                         <OpenSansText style={styles.link}>
                             I forgot my password
                         </OpenSansText>
@@ -61,12 +61,13 @@ export default function Login() {
                             color={Colors.secondary}
                             padding={20}
                             weight="semibold"
+                            onPress={() => {
+                                navigation.navigate("Dashboard");
+                            }}
                         />
                         <Button title="New in the app? Create an account!" />
                     </View>
                 </View>
-
-                <StatusBar style="auto" />
             </ImageBackground>
         </SafeAreaView>
     );
