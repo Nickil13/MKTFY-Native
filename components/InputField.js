@@ -38,14 +38,15 @@ export default function InputField({
 const styles = StyleSheet.create({
     inputControl: { display: "flex", gap: 10, width: "100%" },
     input: {
-        height: 40,
         borderWidth: 1,
-        padding: 10,
+        padding: 15,
         borderRadius: 4,
         borderColor: Colors.gray100,
         color: Colors.offBlack,
+        placeholderTextColor: Colors.gray200,
         fontFamily: "opensans-regular",
         backgroundColor: "white",
+        fontSize: 15,
     },
     label: {},
 });

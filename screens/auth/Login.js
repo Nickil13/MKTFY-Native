@@ -28,43 +28,60 @@ export default function Login({ navigation }) {
                     gap: 40,
                 }}
             >
-                <Image
-                    style={{ width: 235, height: 89 }}
-                    source={require("../../assets/images/logo.png")}
-                />
-
-                <View style={{ width: "90%", display: "flex", gap: 10 }}>
-                    <InputField
-                        label="Email"
-                        onChangeText={onChangeEmail}
-                        value={email}
-                        placeholder="email@info.com"
+                <View
+                    style={{
+                        width: "90%",
+                        flexGrow: 1,
+                        paddingTop: 160,
+                        alignItems: "center",
+                        paddingBottom: 20,
+                        gap: 30,
+                    }}
+                >
+                    <Image
+                        style={{ width: 235, height: 89 }}
+                        source={require("../../assets/images/logo.png")}
                     />
-                    <InputField
-                        label="Password"
-                        type="password"
-                        onChangeText={onChangePassword}
-                        value={password}
-                        placeholder="password"
-                    />
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate("Forgot Password")}
+                    <View
+                        style={{
+                            gap: 10,
+                            width: "100%",
+                        }}
                     >
-                        <OpenSansText style={styles.link}>
-                            I forgot my password
-                        </OpenSansText>
-                    </TouchableOpacity>
-
-                    <View style={{ display: "flex", gap: 10 }}>
-                        <Button
-                            title="Login"
-                            color={Colors.secondary}
-                            padding={20}
-                            weight="semibold"
-                            onPress={() => {
-                                navigation.navigate("Dashboard");
-                            }}
+                        <InputField
+                            label="Email"
+                            onChangeText={onChangeEmail}
+                            value={email}
+                            placeholder="email@info.com"
                         />
+                        <InputField
+                            label="Password"
+                            type="password"
+                            onChangeText={onChangePassword}
+                            value={password}
+                            placeholder="Insert your password"
+                        />
+                        <TouchableOpacity
+                            style={{ alignSelf: "flex-end" }}
+                            onPress={() =>
+                                navigation.navigate("Forgot Password")
+                            }
+                        >
+                            <OpenSansText style={styles.link}>
+                                I forgot my password
+                            </OpenSansText>
+                        </TouchableOpacity>
+                    </View>
+                    <Button
+                        title="Login"
+                        color={Colors.secondary}
+                        padding={20}
+                        weight="semibold"
+                        onPress={() => {
+                            navigation.navigate("Dashboard");
+                        }}
+                    />
+                    <View style={{ marginTop: "auto", width: "100%" }}>
                         <Button title="New in the app? Create an account!" />
                     </View>
                 </View>
