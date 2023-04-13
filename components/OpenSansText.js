@@ -3,8 +3,9 @@ import { Text } from "react-native";
 import { useFonts } from "expo-font";
 import { Colors } from "../assets/Colors";
 
-export default function OpenSansText({ children, weight, style }) {
+export default function OpenSansText({ children, weight, style, color }) {
     const [loaded] = useFonts({
+        "opensans-light": require("../assets/fonts/OpenSans-Light.ttf"),
         "opensans-regular": require("../assets/fonts/OpenSans-Regular.ttf"),
         "opensans-medium": require("../assets/fonts/OpenSans-Medium.ttf"),
         "opensans-semibold": require("../assets/fonts/OpenSans-SemiBold.ttf"),
@@ -19,6 +20,8 @@ export default function OpenSansText({ children, weight, style }) {
                 return "opensans-semibold";
             case "medium":
                 return "opensans-medium";
+            case "light":
+                return "opensans-light";
             default:
                 return "opensans-regular";
         }
@@ -33,7 +36,7 @@ export default function OpenSansText({ children, weight, style }) {
             style={{
                 fontFamily: getWeight(),
                 fontSize: 16,
-                color: Colors.offBlack,
+                color: color || Colors.offBlack,
                 ...style,
             }}
         >

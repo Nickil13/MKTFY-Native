@@ -6,7 +6,7 @@ import { useColorScheme } from "react-native";
 import { MyDarkTheme, MyTheme } from "../assets/themes";
 
 export default function RootStack() {
-    const isLoggedIn = false;
+    const isLoggedIn = true;
     const scheme = useColorScheme();
     return (
         <NavigationContainer theme={scheme === "dark" ? MyDarkTheme : MyTheme}>

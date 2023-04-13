@@ -3,6 +3,7 @@ import { Pressable, StyleSheet } from "react-native";
 import OpenSansText from "./OpenSansText";
 import { Colors } from "../assets/Colors";
 import { useTheme } from "@react-navigation/native";
+import { globalStyles } from "../assets/globalStyles";
 
 export default function Button({ title, onPress, color, padding, weight }) {
     const { colors } = useTheme();
@@ -16,6 +17,7 @@ export default function Button({ title, onPress, color, padding, weight }) {
                     padding: padding || 12,
                 },
                 styles.wrapperCustom,
+                globalStyles.shadow,
             ]}
         >
             <OpenSansText
@@ -35,9 +37,6 @@ const styles = StyleSheet.create({
     wrapperCustom: {
         borderRadius: 8,
         borderRadius: 100,
-        shadowColor: "#00000024",
-        shadowOffset: { width: 0, height: 5 },
-        shadowRadius: 20,
         width: "100%",
     },
 });

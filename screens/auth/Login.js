@@ -95,7 +95,7 @@ export default function Login({ navigation }) {
                             padding={20}
                             weight="semibold"
                             onPress={() => {
-                                navigation.navigate("Dashboard");
+                                // log in
                             }}
                         />
                         <View
