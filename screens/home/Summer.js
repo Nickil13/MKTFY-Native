@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     link: {
         color: Colors.secondary,
         fontSize: 14,
-        alignSelf: "end",
+        alignSelf: "flex-end",
         textDecorationLine: "underline",
     },
 });

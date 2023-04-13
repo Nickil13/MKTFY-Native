@@ -3,6 +3,7 @@ import OpenSansText from "../components/OpenSansText";
 import { TextInput, View, StyleSheet } from "react-native";
 import { Colors } from "../assets/Colors";
 import { useFonts } from "expo-font";
+import { useTheme } from "@react-navigation/native";
 
 export default function InputField({
     onChangeText,
@@ -11,6 +12,7 @@ export default function InputField({
     label,
     type,
 }) {
+    const { colors } = useTheme();
     const [loaded] = useFonts({
         "opensans-regular": require("../assets/fonts/OpenSans-Regular.ttf"),
     });
@@ -21,7 +23,7 @@ export default function InputField({
 
     return (
         <View style={styles.inputControl}>
-            <OpenSansText style={styles.label} weight="medium">
+            <OpenSansText style={{ color: colors.text }} weight="medium">
                 {label}
             </OpenSansText>
             <TextInput
@@ -30,6 +32,7 @@ export default function InputField({
                 value={value}
                 secureTextEntry={type === "password"}
                 placeholder={placeholder}
+                placeholderTextColor={Colors.gray200}
             />
         </View>
     );
@@ -43,7 +46,6 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         borderColor: Colors.gray100,
         color: Colors.offBlack,
-        placeholderTextColor: Colors.gray200,
         fontFamily: "opensans-regular",
         backgroundColor: "white",
         fontSize: 15,

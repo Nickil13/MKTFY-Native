@@ -1,99 +1,122 @@
 import { useState } from "react";
 import {
     StyleSheet,
+    Platform,
     Image,
     View,
     ImageBackground,
     SafeAreaView,
     TouchableOpacity,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
 import OpenSansText from "../../components/OpenSansText";
 import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 import { Colors } from "../../assets/Colors";
+import { useTheme } from "@react-navigation/native";
 
 export default function Login({ navigation }) {
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
+    const { colors } = useTheme();
     return (
-        <SafeAreaView style={styles.container}>
-            <ImageBackground
-                source={require("../../assets/images/img_background_clouds_footer.png")}
-                resizeMode="cover"
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    flex: 1,
-                    ...styles.container,
-                    gap: 40,
-                }}
+        <TouchableWithoutFeedback
+            onPress={() => {
+                if (Platform.OS !== "web") {
+                    Keyboard.dismiss();
+                }
+            }}
+        >
+            <SafeAreaView
+                style={[
+                    styles.container,
+                    { backgroundColor: colors.background },
+                ]}
             >
-                <View
+                <ImageBackground
+                    source={require("../../assets/images/img_background_clouds_footer.png")}
+                    resizeMode="cover"
                     style={{
-                        width: "90%",
-                        flexGrow: 1,
-                        paddingTop: 160,
-                        alignItems: "center",
-                        paddingBottom: 20,
-                        gap: 30,
+                        width: "100%",
+                        height: "100%",
+                        flex: 1,
+                        ...styles.container,
+                        gap: 40,
                     }}
                 >
-                    <Image
-                        style={{ width: 235, height: 89 }}
-                        source={require("../../assets/images/logo.png")}
-                    />
                     <View
                         style={{
-                            gap: 10,
-                            width: "100%",
+                            width: "90%",
+                            flexGrow: 1,
+                            paddingTop: 160,
+                            alignItems: "center",
+                            paddingBottom: 20,
+                            gap: 30,
                         }}
                     >
-                        <InputField
-                            label="Email"
-                            onChangeText={onChangeEmail}
-                            value={email}
-                            placeholder="email@info.com"
+                        <Image
+                            style={{ width: 235, height: 89 }}
+                            source={require("../../assets/images/logo.png")}
                         />
-                        <InputField
-                            label="Password"
-                            type="password"
-                            onChangeText={onChangePassword}
-                            value={password}
-                            placeholder="Insert your password"
-                        />
-                        <TouchableOpacity
-                            style={{ alignSelf: "flex-end" }}
-                            onPress={() =>
-                                navigation.navigate("Forgot Password")
-                            }
+                        <View
+                            style={{
+                                gap: 10,
+                                width: "100%",
+                            }}
                         >
-                            <OpenSansText style={styles.link}>
-                                I forgot my password
-                            </OpenSansText>
-                        </TouchableOpacity>
+                            <InputField
+                                label="Email"
+                                onChangeText={onChangeEmail}
+                                value={email}
+                                placeholder="email@info.com"
+                            />
+                            <InputField
+                                label="Password"
+                                type="password"
+                                onChangeText={onChangePassword}
+                                value={password}
+                                placeholder="Insert your password"
+                            />
+                            <TouchableOpacity
+                                style={{ alignSelf: "flex-end" }}
+                                onPress={() =>
+                                    navigation.navigate("Forgot Password")
+                                }
+                            >
+                                <OpenSansText style={styles.link}>
+                                    I forgot my password
+                                </OpenSansText>
+                            </TouchableOpacity>
+                        </View>
+                        <Button
+                            title="Login"
+                            color={Colors.secondary}
+                            padding={20}
+                            weight="semibold"
+                            onPress={() => {
+                                navigation.navigate("Dashboard");
+                            }}
+                        />
+                        <View
+                            style={{
+                                position: "absolute",
+                                bottom: 10,
+                                width: "100%",
+                            }}
+                        >
+                            <Button title="New in the app? Create an account!" />
+                        </View>
                     </View>
-                    <Button
-                        title="Login"
-                        color={Colors.secondary}
-                        padding={20}
-                        weight="semibold"
-                        onPress={() => {
-                            navigation.navigate("Dashboard");
-                        }}
-                    />
-                    <View style={{ marginTop: "auto", width: "100%" }}>
-                        <Button title="New in the app? Create an account!" />
-                    </View>
-                </View>
-            </ImageBackground>
-        </SafeAreaView>
+                </ImageBackground>
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
     },
@@ -101,7 +124,7 @@ const styles = StyleSheet.create({
     link: {
         color: Colors.secondary,
         fontSize: 14,
-        alignSelf: "end",
+        alignSelf: "flex-end",
         textDecorationLine: "underline",
     },
 });
