@@ -11,6 +11,7 @@ export default function InputField({
     placeholder,
     label,
     type,
+    numberOfLines,
 }) {
     const { colors } = useTheme();
     const [loaded] = useFonts({
@@ -27,12 +28,17 @@ export default function InputField({
                 {label}
             </OpenSansText>
             <TextInput
-                style={styles.input}
+                style={[
+                    styles.input,
+                    { textAlignVertical: numberOfLines ? "top" : "auto" },
+                ]}
                 onChangeText={onChangeText}
                 value={value}
                 secureTextEntry={type === "password"}
                 placeholder={placeholder}
                 placeholderTextColor={Colors.gray200}
+                numberOfLines={numberOfLines}
+                multiline={numberOfLines && numberOfLines > 0}
             />
         </View>
     );

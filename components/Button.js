@@ -5,7 +5,15 @@ import { Colors } from "../assets/Colors";
 import { useTheme } from "@react-navigation/native";
 import { globalStyles } from "../assets/globalStyles";
 
-export default function Button({ title, onPress, color, padding, weight }) {
+export default function Button({
+    title,
+    onPress,
+    color,
+    padding,
+    weight,
+    style,
+    icon,
+}) {
     const { colors } = useTheme();
     return (
         <Pressable
@@ -18,12 +26,15 @@ export default function Button({ title, onPress, color, padding, weight }) {
                 },
                 styles.wrapperCustom,
                 globalStyles.shadow,
+                style,
             ]}
         >
+            {icon && icon}
             <OpenSansText
                 style={{
                     color: color ? "white" : colors.primary,
                     textAlign: "center",
+                    marginLeft: 4,
                 }}
                 weight={weight || "medium"}
             >
@@ -38,5 +49,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderRadius: 100,
         width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
     },
 });

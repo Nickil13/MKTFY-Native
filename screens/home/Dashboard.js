@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react";
-import {
-    View,
-    StyleSheet,
-    SafeAreaView,
-    Image,
-    ScrollView,
-    FlatList,
-    TouchableWithoutFeedback,
-} from "react-native";
+import React from "react";
+import { View, StyleSheet, SafeAreaView, FlatList } from "react-native";
 import Navbar from "../../components/Navbar";
 import OpenSansText from "../../components/OpenSansText";
 import Button from "../../components/Button";
 import { Colors } from "../../assets/Colors";
 import { useTheme } from "@react-navigation/native";
 import { globalStyles } from "../../assets/globalStyles";
+import PlusIcon from "../../assets/svg/PlusIcon";
+import Card from "../../components/Card";
 
 const testSrc =
     "https://images.unsplash.com/photo-1681217684376-82f841d33f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80";
@@ -36,13 +30,7 @@ export default function Dashboard({ navigation }) {
         //     ),
         // });
     }, [navigation]);
-    {
-        /* <Card title="Incredibly beautiful flower" src={testSrc} />
-                    <Card title="Shapes" src={testSrc2} />
-                    <Card title="Vegetarian's Delight" src={testSrc3} />
-                    <Card title="Incredibly beautiful flower" src={testSrc} />
-                    <Card title="Incredibly beautiful flower" src={testSrc} /> */
-    }
+
     const cards = [
         { title: "Incredibly beautiful flower", src: testSrc },
         { title: "Shapes", src: testSrc2 },
@@ -106,51 +94,30 @@ export default function Dashboard({ navigation }) {
                     )}
                 />
             </View>
+            <View
+                style={{
+                    position: "absolute",
+                    right: "50%",
+                    bottom: 40,
+                    left: 0,
+                    right: 0,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pointerEvents: "box-none",
+                }}
+            >
+                <Button
+                    color={Colors.primary}
+                    style={{ maxWidth: 200 }}
+                    padding={16}
+                    onPress={() => navigation.navigate("Create Listing")}
+                    title="Create Listing"
+                    icon={<PlusIcon size={24} color="#fff" />}
+                />
+            </View>
         </SafeAreaView>
     );
 }
-
-const Card = ({ title, src, index, onPress }) => {
-    return (
-        <TouchableWithoutFeedback onPress={onPress}>
-            <View
-                style={[
-                    {
-                        width: "45%",
-                        borderRadius: 10,
-                        overflow: "hidden",
-                        elevation: 8,
-                        marginRight: index % 2 !== 0 ? 0 : 10,
-                    },
-                    globalStyles.shadow,
-                ]}
-            >
-                <View
-                    style={{
-                        height: 140,
-                    }}
-                >
-                    <Image
-                        source={{ uri: src }}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                        }}
-                        resizeMode="cover"
-                    />
-                </View>
-                <View
-                    style={{ padding: 10, gap: 10, backgroundColor: "white" }}
-                >
-                    <OpenSansText>{title}</OpenSansText>
-                    <OpenSansText color={Colors.primary} weight="bold">
-                        $ 169.88
-                    </OpenSansText>
-                </View>
-            </View>
-        </TouchableWithoutFeedback>
-    );
-};
 
 const styles = StyleSheet.create({
     container: {
