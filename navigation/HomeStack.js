@@ -3,12 +3,13 @@ import Dashboard from "../screens/home/Dashboard";
 import Product from "../screens/home/Product";
 import NavMenu from "../components/Modals/NavMenu";
 import CreateListing from "../screens/home/CreateListing";
+import ReactNativeElements from "../screens/home/ReactNativeElements";
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeStack() {
     return (
-        <Stack.Navigator initialRouteName="Create Listing">
+        <Stack.Navigator initialRouteName="Dashboard">
             <Stack.Screen
                 name="Dashboard"
                 component={Dashboard}
@@ -24,6 +25,13 @@ export default function HomeStack() {
             <Stack.Screen
                 name="Create Listing"
                 component={CreateListing}
+                options={{
+                    headerBackImageSource: require("../assets/images/icon_back.png"),
+                }}
+            />
+            <Stack.Screen
+                name="React Native Elements"
+                component={ReactNativeElements}
                 options={{
                     headerBackImageSource: require("../assets/images/icon_back.png"),
                 }}

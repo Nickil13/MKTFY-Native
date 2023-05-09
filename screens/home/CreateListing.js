@@ -20,10 +20,11 @@ const categories = [
     "Electronics",
     "Real Estate",
 ];
-export default function CreateListing({ route, navigation }) {
+export default function CreateListing({ navigation }) {
+    const MAX_IMAGES = 3;
     const { colors } = useTheme();
     const [category, setCategory] = useState(null);
-
+    const [images, setImages] = useState([]);
     return (
         <SafeAreaView
             style={[styles.container, { backgroundColor: colors.background }]}
@@ -32,27 +33,57 @@ export default function CreateListing({ route, navigation }) {
                 <View
                     style={{
                         margin: 20,
-                        borderWidth: 1,
+                        borderWidth: images?.length === 0 ? 1 : 0,
                         borderRadius: 4,
                         borderColor: Colors.primary,
                     }}
                 >
-                    <ImagePickerExample>
+                    <ImagePickerExample images={images} setImages={setImages}>
                         <View
                             style={{
-                                paddingHorizontal: 20,
-                                paddingVertical: 40,
+                                paddingHorizontal:
+                                    images?.length === 0 ? 20 : 0,
+                                paddingVertical: images?.length === 0 ? 40 : 0,
                                 gap: 10,
                                 alignItems: "center",
                             }}
                         >
-                            <Image
-                                source={require("../../assets/images/icon_camera.png")}
-                                style={{ width: 40, height: 40 }}
-                            />
-                            <OpenSansText color={Colors.primary}>
-                                Choose up to 3 photos
-                            </OpenSansText>
+                            {images?.length === 0 ? (
+                                <>
+                                    <Image
+                                        source={require("../../assets/images/icon_camera.png")}
+                                        style={{ width: 40, height: 40 }}
+                                    />
+                                    <OpenSansText color={Colors.primary}>
+                                        Choose up to 3 photos
+                                    </OpenSansText>
+                                </>
+                            ) : (
+                                images.length < MAX_IMAGES && (
+                                    <View
+                                        style={{
+                                            width: "90%",
+                                            height: 140,
+                                            borderWidth: 1,
+                                            borderRadius: 4,
+                                            borderColor: Colors.primary,
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../assets/images/icon_camera.png")}
+                                            style={{ width: 40, height: 40 }}
+                                        />
+                                        <OpenSansText
+                                            color={Colors.primary}
+                                            style={{ textAlign: "center" }}
+                                        >
+                                            Add another photo
+                                        </OpenSansText>
+                                    </View>
+                                )
+                            )}
                         </View>
                     </ImagePickerExample>
                 </View>
@@ -107,7 +138,10 @@ export default function CreateListing({ route, navigation }) {
                         options={["Calgary", "Brooks"]}
                     />
                     <Button color={Colors.primary} title="Post your listing" />
-                    <Button title="Cancel" />
+                    <Button
+                        title="Cancel"
+                        onPress={() => navigation.navigate("Dashboard")}
+                    />
                 </View>
             </ScrollView>
         </SafeAreaView>

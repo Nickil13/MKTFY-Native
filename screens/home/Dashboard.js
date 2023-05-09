@@ -57,6 +57,12 @@ export default function Dashboard({ navigation }) {
                 </View>
                 <OpenSansText>A list of all the categories...</OpenSansText>
             </View>
+            <View>
+                <Button
+                    title="Go to React Native Elements"
+                    onPress={() => navigation.navigate("React Native Elements")}
+                />
+            </View>
             <View
                 style={{
                     flex: 1,
