@@ -15,11 +15,14 @@ import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 import { Colors } from "../../assets/Colors";
 import { useTheme } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/userSlice";
 
 export default function Login({ navigation }) {
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
     const { colors } = useTheme();
+    const dispatch = useDispatch();
     return (
         <TouchableWithoutFeedback
             onPress={() => {
@@ -95,7 +98,7 @@ export default function Login({ navigation }) {
                             padding={20}
                             weight="semibold"
                             onPress={() => {
-                                // log in
+                                dispatch(login());
                             }}
                         />
                         <View
@@ -105,7 +108,12 @@ export default function Login({ navigation }) {
                                 width: "100%",
                             }}
                         >
-                            <Button title="New in the app? Create an account!" />
+                            <Button
+                                title="New in the app? Create an account!"
+                                onPress={() =>
+                                    navigation.navigate("Create Account")
+                                }
+                            />
                         </View>
                     </View>
                 </ImageBackground>

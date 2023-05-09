@@ -4,6 +4,7 @@ import Product from "../screens/home/Product";
 import NavMenu from "../components/Modals/NavMenu";
 import CreateListing from "../screens/home/CreateListing";
 import ReactNativeElements from "../screens/home/ReactNativeElements";
+import BottomDrawerPage from "../screens/home/BottomDrawerPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,13 @@ export default function HomeStack() {
             <Stack.Screen
                 name="React Native Elements"
                 component={ReactNativeElements}
+                options={{
+                    headerBackImageSource: require("../assets/images/icon_back.png"),
+                }}
+            />
+            <Stack.Screen
+                name="Bottom Drawer Page"
+                component={BottomDrawerPage}
                 options={{
                     headerBackImageSource: require("../assets/images/icon_back.png"),
                 }}

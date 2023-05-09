@@ -4,6 +4,8 @@ import OpenSansText from "../OpenSansText";
 import { Colors } from "../../assets/Colors";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { globalStyles } from "../../assets/globalStyles";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/userSlice";
 
 const links = [
     {
@@ -19,6 +21,7 @@ const links = [
     { title: "Help", data: ["FAQ", "Contact Us"] },
 ];
 export default function NavMenu({ navigation }) {
+    const dispatch = useDispatch();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bgBeige }}>
             <View style={styles.menuHeader}>
@@ -65,6 +68,22 @@ export default function NavMenu({ navigation }) {
                     )}
                     keyExtractor={(index) => index}
                 />
+                <Pressable
+                    onPress={() => {
+                        navigation.navigate("Bottom Drawer Page");
+                    }}
+                >
+                    <OpenSansText color={Colors.secondary}>
+                        Bottom Drawer Page
+                    </OpenSansText>
+                </Pressable>
+                <Pressable
+                    onPress={() => {
+                        dispatch(logout());
+                    }}
+                >
+                    <OpenSansText color={Colors.primary}>Logout</OpenSansText>
+                </Pressable>
             </View>
 
             <Pressable
