@@ -79,6 +79,15 @@ export default function NavMenu({ navigation }) {
                 </Pressable>
                 <Pressable
                     onPress={() => {
+                        navigation.navigate("Pedometer");
+                    }}
+                >
+                    <OpenSansText color={Colors.secondary}>
+                        Pedometer Page
+                    </OpenSansText>
+                </Pressable>
+                <Pressable
+                    onPress={() => {
                         dispatch(logout());
                     }}
                 >

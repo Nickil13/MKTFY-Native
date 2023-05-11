@@ -45,7 +45,13 @@ export default function Product({ route, navigation }) {
                         >
                             $ 340.00
                         </OpenSansText>
-                        <Button title="I want this!" color={Colors.primary} />
+                        <Button
+                            title="I want this!"
+                            color={Colors.primary}
+                            onPress={() =>
+                                navigation.navigate("Checkout", { item })
+                            }
+                        />
                     </View>
                     <View style={{ padding: 20, gap: 10 }}>
                         <OpenSansText weight="semibold" color={Colors.primary}>
